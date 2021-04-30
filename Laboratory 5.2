@@ -1,0 +1,32 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+VA = np.array([
+    [1,0,2],
+    [1,1,0],
+    [0.150,1,2]
+])
+
+fig = plt.figure()
+ax1 = fig.gca(projection='3d')
+
+VC = np.array([0,3])
+
+#visualize
+plt.title('Visualize of Data')
+ax1.set_xlim([0, 5])
+ax1.set_ylim([0, 5])
+ax1.set_zlim([0, 5])
+
+origin = (0,0,0)
+
+#Resultant Vector
+ax1.quiver(origin, origin, origin, VA[:,0], VA[:,1], VA[:,2],arrow_length_ratio=0.05, colors=['red','blue','green'])
+
+#plotting
+colors = ['r','b','g']
+for i in range(VA.shape[0]):
+    ax1.plot(VC*VA[i,0],VC*VA[i,1],VC*VA[i,2], color=colors[i])
+
+plt.grid()
+plt.show()
